@@ -11,6 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120505015150) do
+
+  create_table "market_groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "market_products", :force => true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.integer  "quantity"
+    t.boolean  "unavailable"
+    t.integer  "group_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "market_products", ["group_id"], :name => "index_market_products_on_group_id"
 
 end
